@@ -1,10 +1,23 @@
 
-import { useRouter } from "next/router";
+import Image from "next/image";
+import { ImageContainer, ProductContainer, ProductDetailsContainer } from "../../styles/pages/product";
+
 
 export default function Product() {
-  const { query } = useRouter();
 
   return (
-    <h1>Product: {JSON.stringify(query)}</h1>
+    <ProductContainer>
+      <ImageContainer>
+        imagem
+      </ImageContainer>
+      <ProductDetailsContainer>
+        <h1>Camiseta x</h1>
+        <span>R$ 79,90</span>
+
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum, deserunt?</p>
+
+        <button>Comprar agora</button>
+      </ProductDetailsContainer>
+    </ProductContainer>
   )
 }
