@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key */
 import Link from "next/link";
 import Image from "next/image";
 import Stripe from "stripe";
@@ -8,13 +7,14 @@ import { stripe } from "../lib/stripe";
 import { HomeContainer, Product } from "../styles/pages/home";
 
 import "keen-slider/keen-slider.min.css";
+import { GetStaticProps } from "next";
 
 interface HomeProps {
   products: {
     id: string,
     name: string,
     imageUrl: string,
-    price: number
+    price: string
   }[]
 }
 
@@ -49,7 +49,7 @@ export default function Home({ products }: HomeProps) {
   )
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const response = await stripe.products.list({
     expand: ['data.default_price']
   });
